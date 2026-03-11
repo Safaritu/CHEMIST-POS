@@ -21,9 +21,121 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
+            display: flex;
         }
 
-        /* ===== LAYOUT ===== */
+        /* ===== SIDEBAR NAVIGATION ===== */
+        .sidebar {
+            width: 280px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            padding: 30px 20px;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .sidebar-logo-text h2 {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .sidebar-logo-text span {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .nav-item {
+            margin-bottom: 5px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link i {
+            width: 24px;
+            font-size: 18px;
+            color: #667eea;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            background: rgba(102, 126, 234, 0.15);
+            color: white;
+        }
+
+        .nav-link:hover i {
+            color: white;
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.5);
+        }
+
+        .nav-link.active i {
+            color: white;
+        }
+
+        .nav-section {
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 20px 15px 10px;
+        }
+
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -500,6 +612,17 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px;
+            }
+            
             .pos-grid {
                 grid-template-columns: 1fr;
             }
@@ -527,177 +650,257 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        
-        <!-- HEADER -->
-        <header class="header">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-clinic-medical"></i>
-                </div>
-                <div>
-                    <h1>Chemist POS <span>by SAFTECH</span></h1>
-                </div>
+    <!-- SIDEBAR NAVIGATION - LINKED TO ALL SYSTEM FILES -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="sidebar-logo-icon">
+                <i class="fas fa-clinic-medical"></i>
             </div>
-            <div class="store-info">
-                <div class="store-name">SAFTECH PHARMACY</div>
-                <div class="store-date" id="currentDateTime"></div>
+            <div class="sidebar-logo-text">
+                <h2>Chemist POS</h2>
+                <span>by SAFTECH RESOLUTIONS</span>
             </div>
-        </header>
+        </div>
 
-        <!-- MAIN POS GRID -->
-        <div class="pos-grid">
-            
-            <!-- LEFT SIDE - PRODUCTS -->
-            <div class="products-section">
-                <div class="section-title">
+        <div class="nav-section">MAIN</div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-cash-register"></i>
+                    <span>Point of Sale</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="inventory.html" class="nav-link">
                     <i class="fas fa-boxes"></i>
-                    <span>Products</span>
+                    <span>Inventory</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="customers.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Customers</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="nav-section">MANAGEMENT</div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="suppliers.html" class="nav-link">
+                    <i class="fas fa-truck"></i>
+                    <span>Suppliers</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="sales-history.html" class="nav-link">
+                    <i class="fas fa-history"></i>
+                    <span>Sales History</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="debts.html" class="nav-link">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Debts</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="nav-section">MONITORING</div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="low-stock.html" class="nav-link">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Low Stock</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="drug-health.html" class="nav-link">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Drug Health</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reports.html" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+        </ul>
+
+        <div style="margin-top: 30px; padding: 20px 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+            <div style="color: #94a3b8; font-size: 12px; margin-bottom: 8px;">SYSTEM STATUS</div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="width: 10px; height: 10px; background: #10b981; border-radius: 50%;"></span>
+                <span style="color: white; font-size: 14px;">All Systems Operational</span>
+            </div>
+            <div style="margin-top: 10px; font-size: 12px; color: #64748b;">
+                <i class="fas fa-database"></i> Data stored locally
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- HEADER -->
+            <header class="header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                    <div>
+                        <h1>Chemist POS <span>by SAFTECH</span></h1>
+                    </div>
+                </div>
+                <div class="store-info">
+                    <div class="store-name">SAFTECH PHARMACY</div>
+                    <div class="store-date" id="currentDateTime"></div>
+                </div>
+            </header>
+
+            <!-- MAIN POS GRID -->
+            <div class="pos-grid">
+                
+                <!-- LEFT SIDE - PRODUCTS -->
+                <div class="products-section">
+                    <div class="section-title">
+                        <i class="fas fa-boxes"></i>
+                        <span>Products</span>
+                    </div>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" 
+                               id="searchInput" 
+                               placeholder="Search medicines..."
+                               onkeyup="searchProducts()">
+                    </div>
+                    
+                    <!-- Categories -->
+                    <div class="categories">
+                        <button class="category-btn active" 
+                                data-category="all"
+                                onclick="filterCategory('all', this)">
+                            <i class="fas fa-border-all"></i> All
+                        </button>
+                        <button class="category-btn" 
+                                data-category="antibiotics"
+                                onclick="filterCategory('antibiotics', this)">
+                            <i class="fas fa-capsules"></i> Antibiotics
+                        </button>
+                        <button class="category-btn" 
+                                data-category="painkillers"
+                                onclick="filterCategory('painkillers', this)">
+                            <i class="fas fa-tablets"></i> Painkillers
+                        </button>
+                        <button class="category-btn" 
+                                data-category="vitamins"
+                                onclick="filterCategory('vitamins', this)">
+                            <i class="fas fa-pills"></i> Vitamins
+                        </button>
+                        <button class="category-btn" 
+                                data-category="diabetes"
+                                onclick="filterCategory('diabetes', this)">
+                            <i class="fas fa-syringe"></i> Diabetes
+                        </button>
+                        <button class="category-btn" 
+                                data-category="blood-pressure"
+                                onclick="filterCategory('blood-pressure', this)">
+                            <i class="fas fa-heartbeat"></i> BP
+                        </button>
+                    </div>
+                    
+                    <!-- Products Grid -->
+                    <div id="productsGrid" class="products-grid">
+                        <!-- Products loaded via JavaScript -->
+                    </div>
                 </div>
                 
-                <!-- Search Bar -->
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" 
-                           id="searchInput" 
-                           placeholder="Search medicines..."
-                           onkeyup="searchProducts()">
-                </div>
-                
-                <!-- Categories -->
-                <div class="categories">
-                    <button class="category-btn active" 
-                            data-category="all"
-                            onclick="filterCategory('all', this)">
-                        <i class="fas fa-border-all"></i> All
-                    </button>
-                    <button class="category-btn" 
-                            data-category="antibiotics"
-                            onclick="filterCategory('antibiotics', this)">
-                        <i class="fas fa-capsules"></i> Antibiotics
-                    </button>
-                    <button class="category-btn" 
-                            data-category="painkillers"
-                            onclick="filterCategory('painkillers', this)">
-                        <i class="fas fa-tablets"></i> Painkillers
-                    </button>
-                    <button class="category-btn" 
-                            data-category="vitamins"
-                            onclick="filterCategory('vitamins', this)">
-                        <i class="fas fa-pills"></i> Vitamins
-                    </button>
-                    <button class="category-btn" 
-                            data-category="diabetes"
-                            onclick="filterCategory('diabetes', this)">
-                        <i class="fas fa-syringe"></i> Diabetes
-                    </button>
-                    <button class="category-btn" 
-                            data-category="blood-pressure"
-                            onclick="filterCategory('blood-pressure', this)">
-                        <i class="fas fa-heartbeat"></i> BP
-                    </button>
-                </div>
-                
-                <!-- Products Grid -->
-                <div id="productsGrid" class="products-grid">
-                    <!-- Products loaded via JavaScript -->
+                <!-- RIGHT SIDE - CART -->
+                <div class="cart-section">
+                    <div class="cart-header">
+                        <div class="cart-title">
+                            <i class="fas fa-shopping-cart" style="color: #667eea;"></i>
+                            <span>Current Sale</span>
+                        </div>
+                        <button class="clear-cart" onclick="clearCart()">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                    
+                    <!-- Cart Items -->
+                    <div id="cartItems" class="cart-items">
+                        <!-- Cart items loaded via JavaScript -->
+                    </div>
+                    
+                    <!-- Empty Cart Message -->
+                    <div id="emptyCart" class="empty-cart">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>No items in cart</p>
+                        <small>Click on products to add</small>
+                    </div>
+                    
+                    <!-- Cart Summary -->
+                    <div class="cart-summary">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">KSH 0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>VAT (16%):</span>
+                            <span id="tax">KSH 0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="total">KSH 0.00</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Section -->
+                    <div class="payment-section">
+                        <input type="number" 
+                               id="amountTendered" 
+                               class="payment-input" 
+                               placeholder="Amount Tendered (KSH)"
+                               onkeyup="calculateChange()">
+                        
+                        <div class="change-display">
+                            <div class="change-label">Change</div>
+                            <div class="change-amount" id="changeAmount">KSH 0.00</div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn-primary" onclick="processSale()">
+                                <i class="fas fa-check-circle"></i> Complete Sale
+                            </button>
+                            <button class="btn-secondary" onclick="holdSale()">
+                                <i class="fas fa-pause-circle"></i> Hold
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <!-- RIGHT SIDE - CART -->
-            <div class="cart-section">
-                <div class="cart-header">
-                    <div class="cart-title">
-                        <i class="fas fa-shopping-cart" style="color: #667eea;"></i>
-                        <span>Current Sale</span>
-                    </div>
-                    <button class="clear-cart" onclick="clearCart()">
-                        <i class="fas fa-trash"></i> Clear
-                    </button>
+            <!-- QUICK STATS -->
+            <div class="stats-bar">
+                <div class="stat-card">
+                    <div class="stat-value" id="todaySales">KSH 0</div>
+                    <div class="stat-label">Today's Sales</div>
                 </div>
-                
-                <!-- Cart Items -->
-                <div id="cartItems" class="cart-items">
-                    <!-- Cart items loaded via JavaScript -->
+                <div class="stat-card">
+                    <div class="stat-value" id="cartCount">0</div>
+                    <div class="stat-label">Items in Cart</div>
                 </div>
-                
-                <!-- Empty Cart Message -->
-                <div id="emptyCart" class="empty-cart">
-                    <i class="fas fa-shopping-basket"></i>
-                    <p>No items in cart</p>
-                    <small>Click on products to add</small>
-                </div>
-                
-                <!-- Cart Summary -->
-                <div class="cart-summary">
-                    <div class="summary-row">
-                        <span>Subtotal:</span>
-                        <span id="subtotal">KSH 0.00</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>VAT (16%):</span>
-                        <span id="tax">KSH 0.00</span>
-                    </div>
-                    <div class="summary-row total">
-                        <span>Total:</span>
-                        <span id="total">KSH 0.00</span>
-                    </div>
-                </div>
-                
-                <!-- Payment Section -->
-                <div class="payment-section">
-                    <input type="number" 
-                           id="amountTendered" 
-                           class="payment-input" 
-                           placeholder="Amount Tendered (KSH)"
-                           onkeyup="calculateChange()">
-                    
-                    <div class="change-display">
-                        <div class="change-label">Change</div>
-                        <div class="change-amount" id="changeAmount">KSH 0.00</div>
-                    </div>
-                    
-                    <div class="action-buttons">
-                        <button class="btn-primary" onclick="processSale()">
-                            <i class="fas fa-check-circle"></i> Complete Sale
-                        </button>
-                        <button class="btn-secondary" onclick="holdSale()">
-                            <i class="fas fa-pause-circle"></i> Hold
-                        </button>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="todayCount">0</div>
+                    <div class="stat-label">Transactions</div>
                 </div>
             </div>
         </div>
-        
-        <!-- QUICK STATS -->
-        <div class="stats-bar">
-            <div class="stat-card">
-                <div class="stat-value" id="todaySales">KSH 0</div>
-                <div class="stat-label">Today's Sales</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="cartCount">0</div>
-                <div class="stat-label">Items in Cart</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="todayCount">0</div>
-                <div class="stat-label">Transactions</div>
-            </div>
-        </div>
-        
-        <!-- NAVIGATION BUTTONS (placeholders for future pages) -->
-        <div style="margin-top: 20px; text-align: center;">
-            <button class="btn-secondary" onclick="showNotification('Inventory page coming soon!', 'info')">
-                <i class="fas fa-boxes"></i> Inventory
-            </button>
-            <button class="btn-secondary" onclick="showNotification('Customers page coming soon!', 'info')">
-                <i class="fas fa-users"></i> Customers
-            </button>
-            <button class="btn-secondary" onclick="showNotification('Reports page coming soon!', 'info')">
-                <i class="fas fa-chart-bar"></i> Reports
-            </button>
-        </div>
-    </div>
+    </main>
 
     <script>
         // ===== CHEMIST POS - COMPLETE JAVASCRIPT =====
@@ -716,7 +919,21 @@
             
             // Update time every second
             setInterval(updateDateTime, 1000);
+
+            // Highlight current page in sidebar
+            highlightCurrentPage();
         });
+
+        // Highlight current page in sidebar
+        function highlightCurrentPage() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        }
 
         // Load Sample Data
         function loadSampleData() {
@@ -966,7 +1183,6 @@
             document.getElementById('total').textContent = `KSH ${total.toFixed(2)}`;
             
             document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartTotal').textContent = `KSH ${total.toFixed(2)}`;
         }
 
         // Calculate Change
